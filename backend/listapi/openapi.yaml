@@ -1,0 +1,23 @@
+openapi: 3.0.4
+info:
+  title: backend listapi REST API
+  version: 0.1
+
+paths:
+  /status:
+    get:
+      summary: Returns current system health.
+      responses:
+        "200":        
+          description: 
+          content:
+            application/json:
+              schema: object
+              properties:
+                message:
+                  type: string
+                timestamp:
+                  type: string
+              example:
+                message: listapi server running
+                timestamp: 2026-05-14T19:59:26.414Z

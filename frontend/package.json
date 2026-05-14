@@ -1,0 +1,29 @@
+{
+  "name": "shoppinglist",
+  "version": "1.0.0",
+  "author": "jfgoss",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "@react-router/node": "7.15.1",
+    "@react-router/serve": "7.15.1",
+    "axios": "^1.16.1",
+    "isbot": "^5.1.36",
+    "jest": "^30.4.2",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router": "7.15.1"
+  },
+  "devDependencies": {
+    "@react-router/dev": "7.15.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.3"
+  }
+}
