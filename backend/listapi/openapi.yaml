@@ -21,3 +21,77 @@ paths:
               example:
                 message: listapi server running
                 timestamp: 2026-05-14T19:59:26.414Z
+  /login:
+    post:
+      summary: Get a user token for a specified user
+      requestBody:
+        description: Get an authorization token for the specified user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: object
+              properties:
+                token:
+                  type: string
+        "400":
+          description: The request is invalid
+        "401":
+          description: Authorization of the specified user failed
+  /list/{listId}:
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+          description: Authorization token
+        - in: path
+          name: listId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the shopping list to get for the user matching the authorization token
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: object
+              properties:
+                token:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                      price:
+                        type: number
+                      order:
+                        type: integer
+              example:
+                - title: item1
+                  price: 1
+                  order: 2
+                - title: item2
+                  price: 43.21
+                  order: 1
+        "401":
+          description: The user token is invalid
+        "403":
+          description: The user for the token is not forbidden from accessing the specified list
+        "404":
+          description: Not found

@@ -1,15 +1,30 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const cors = require("cors")
 
-app.use(express.json());
+const auth = require("./middleware/auth")
+const lists = require("./middleware/lists")
 
-app.get('/status', (req, res) => {
-  res.json({
-    statusCode: 200,
+app.use(express.json())
+app.use(cors())
+
+app.get("/status", (req, res) => {
+  console.log(`/status request from ${req.hostname}`)
+  res.status(200).json({
     message: 'listapi server running',
     timestamp: new Date().toISOString()
   });
 });
+
+app.post("/login", (req, res) => {
+  console.log(`/login request from ${req.hostname}`)
+  auth.getToken(req, res)
+})
+
+app.get("/list/:listId", (req, res) => {
+  console.log(`/list request from ${req.hostname}`)
+  lists.getList(req, res)
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
