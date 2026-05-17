@@ -2,6 +2,8 @@
 
 Shopping list frontend built on [React Router JavaScript template](https://github.com/remix-run/react-router-templates/tree/main/javascript).
 
+Note that some sections of this document are from the original React Router template readme.
+
 ## Dependencies
 
 ### node package manager

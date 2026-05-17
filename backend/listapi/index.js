@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors")
 
-const auth = require("./middleware/auth")
-const lists = require("./middleware/lists")
+const { getToken } = require("./middleware/auth")
+const { getList } = require("./middleware/lists")
 
 app.use(express.json())
 app.use(cors())
@@ -18,12 +18,12 @@ app.get("/status", (req, res) => {
 
 app.post("/login", (req, res) => {
   console.log(`/login request from ${req.hostname}`)
-  auth.getToken(req, res)
+  getToken(req, res)
 })
 
 app.get("/list/:listId", (req, res) => {
   console.log(`/list request from ${req.hostname}`)
-  lists.getList(req, res)
+  getList(req, res)
 })
 
 const PORT = process.env.PORT || 3000;

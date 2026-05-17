@@ -2,10 +2,11 @@ import axios from "axios"
 import { getListApiUrl } from "./config"
 import { getSessionToken } from "./loginUser"
 
-export const getList = (listId, setList, setErrorMessage) => {
+export const getList = async (listId, setList, setErrorMessage) => {
   const sessionToken = getSessionToken()
   if (!sessionToken) {
     console.error("No user session")
+    setErrorMessage("No user session, please sign in")
     return
   }
 
@@ -15,7 +16,7 @@ export const getList = (listId, setList, setErrorMessage) => {
 
   let list
   const url = `${getListApiUrl()}/list/${listId}`
-  axios.get(url, { headers: headers })
+  return axios.get(url, { headers: headers })
     .then(response => {
       setList(response.data)
     })
