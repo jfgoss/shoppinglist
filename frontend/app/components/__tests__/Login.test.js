@@ -5,13 +5,14 @@ import { Login } from "../Login"
 //       Suspect issue with babel translation from jsx?
 //       Have tried import React from "react", but doesn't fix
 describe('Login component', () => {
-  it('renders error message', () => {
+  it('renders login component', () => {
     // Arrange
-    const testMessage = "This is an error message"
+    const mockSetSessionToken = jest.fn()
+    const mockSetErrorMessage = jest.fn()
 
     // Act
     const {container} = render(
-      <ErrorMessage message={testMessage} />
+      <Login setSessionToken={mockSetSessionToken} setErrorMessage={mockSetErrorMessage} />
     )
 
     // Assert
