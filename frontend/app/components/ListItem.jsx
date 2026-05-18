@@ -1,4 +1,4 @@
-export const ListItem = ({listItem}) => {
+export const ListItem = ({listItem, onDelete}) => {
   // TODO: Only render if data is valid. Need to confirm requirements on how to handle this.
   if (listItem?.title && listItem?.price) {
     return (
@@ -10,6 +10,9 @@ export const ListItem = ({listItem}) => {
             </td>
             <td width='50'>
               {`£${listItem.price.toFixed(2)}`}
+            </td>
+            <td>
+              <button onClick={() => onDelete(listItem.order)}>Delete</button>
             </td>
           </tr>
         </tbody>

@@ -35,7 +35,7 @@ export default function Home() {
         <Login setSessionToken={setSessionToken} setErrorMessage={setErrorMessage} />
       ) : currentList ? (
         <>
-          <ShoppingList list={currentList} />
+          <ShoppingList list={currentList} setList={setCurrentList} />
           <p />
           <AddItem list={currentList} setList={setCurrentList} />
         </>

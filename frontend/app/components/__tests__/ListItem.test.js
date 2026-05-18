@@ -14,10 +14,11 @@ describe('ListItem component', () => {
     [ { order: 1, price: -1, title: "test item" } ], // Negative price
   ])('renders listItem name and price %s', (testItem) => {
     // Arrange
+    const mockOnDelete = jest.fn()
 
     // Act
     const {container} = render(
-      <ListItem listItem={testItem} />
+      <ListItem listItem={testItem} onDelete={mockOnDelete} />
     )
 
     // Assert
