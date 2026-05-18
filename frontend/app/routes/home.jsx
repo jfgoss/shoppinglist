@@ -1,4 +1,5 @@
 import { ShoppingList } from "../components/ShoppingList"
+import { AddItem } from "../components/AddItem"
 import { Login } from "../components/Login"
 import { ErrorMessage } from "../components/ErrorMessage"
 import { getList } from "../utils/listApi"
@@ -33,7 +34,11 @@ export default function Home() {
       {!sessionToken ? (
         <Login setSessionToken={setSessionToken} setErrorMessage={setErrorMessage} />
       ) : currentList ? (
-        <ShoppingList list={currentList} />
+        <>
+          <ShoppingList list={currentList} />
+          <p />
+          <AddItem list={currentList} setList={setCurrentList} />
+        </>
       ) : (
         <div>No shopping list available.</div>
       )}

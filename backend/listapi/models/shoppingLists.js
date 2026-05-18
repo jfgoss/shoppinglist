@@ -2,22 +2,22 @@ const list1 = [
     {
       price: 1.23,
       title: "cheese",
-      order: 4
+      order: 3
     },
     {
       price: 2.31,
       title: "milk 4pt",
-      order: 1
+      order: 0
     },
     {
       price: 1.50,
       title: "porridge",
-      order: 3
+      order: 2
     },
     {
       price: 2,
       title: "apples",
-      order: 2
+      order: 1
     },
   ]
 
