@@ -18,7 +18,7 @@ After running the backend and frontend, you can test the list display using the 
 | -------- | -------------------------------------------------- |
 | user1    | Will display test data                             |
 | user2    | User exists, but has no list against their account |
-| <any>    | Will fail to find the account                      |
+| (other)  | Will fail to find the account                      |
 
 When the front end is displayed, enter the user followed by pressing the Submit button.
 
@@ -49,6 +49,13 @@ header.
 Support for multiple users was included from story [#1](https://github.com/jfgoss/shoppinglist/issues/1) as
 I did not want to have an open REST API for the node back end. The intention being that a fully secure login
 would be implemented as story [#10](https://github.com/jfgoss/shoppinglist/issues/10)
+
+### Security advisories
+
+I have enabled security scanning on the project within GitHub. This includes a [report for vulnerabilities](https://github.com/jfgoss/shoppinglist/security/code-scanning).
+
+Whilst any existing vulnerabilities have not yet been resolved, the intent would be to do so as soon as
+possible.
 
 ### Agreed time
 
