@@ -1,0 +1,16 @@
+{
+  "name": "listapi",
+  "version": "1.0.0",
+  "description": "Backend REST API server for shopping list",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage"
+  },
+  "author": "jfgoss",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jest": "^30.4.2"
+  }
+}
