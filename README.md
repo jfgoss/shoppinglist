@@ -22,9 +22,14 @@ After running the backend and frontend, you can test the list display using the 
 
 When the front end is displayed, enter the user followed by pressing the Submit button.
 
-Unfortunately the styling means the controls are currently difficult to see.
-
 ## Notes
+
+### UX Design
+
+No styles have been applied to the UI, using the default for the React Router project. Unfortunately this means the controls are currently difficult to see. It would be beneficial as a next step to incorporate a third party library such as MUI to skin the controls.
+
+The chosen UI library may also provide controls for list displays that provide drag and drop functionality for the shopping list, rather than
+implementing manually with HTML buttons as has currently been done with the delete button.
 
 ### Tracking of changes per story
 
