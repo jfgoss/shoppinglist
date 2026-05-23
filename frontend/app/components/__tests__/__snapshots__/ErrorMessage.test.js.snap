@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ErrorMessage component renders error message 1`] = `
+<div>
+  <div>
+    An error occurred: 
+    This is an error message
+  </div>
+</div>
+`;
