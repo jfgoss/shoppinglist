@@ -20,5 +20,10 @@ export const ListItem = ({listItem, onDelete}) => {
         </tbody>
       </table>
     )
+  } else {
+    return (
+      <>
+      </>
+    )
   }
 }

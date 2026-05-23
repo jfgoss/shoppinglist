@@ -14,6 +14,6 @@ describe('Login component', () => {
     )
 
     // Assert
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

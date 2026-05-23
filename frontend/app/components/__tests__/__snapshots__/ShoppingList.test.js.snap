@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ListItem component renders listItem name and price { order: 1, price: -1, title: 'test item' } 1`] = `
+exports[`ShoppingList component renders shopping list in order 1`] = `
 <div>
   <table
     width="300"
@@ -10,12 +10,12 @@ exports[`ListItem component renders listItem name and price { order: 1, price: -
         <td
           width="100%"
         >
-          test item
+          milk 4pt
         </td>
         <td
           width="50"
         >
-          £-1.00
+          £2.31
         </td>
         <td>
           <button>
@@ -25,13 +25,6 @@ exports[`ListItem component renders listItem name and price { order: 1, price: -
       </tr>
     </tbody>
   </table>
-</div>
-`;
-
-exports[`ListItem component renders listItem name and price { order: 1, price: 2 } 1`] = `<div />`;
-
-exports[`ListItem component renders listItem name and price { order: 1, price: 2, title: 'test item' } 1`] = `
-<div>
   <table
     width="300"
   >
@@ -40,7 +33,7 @@ exports[`ListItem component renders listItem name and price { order: 1, price: 2
         <td
           width="100%"
         >
-          test item
+          apples
         </td>
         <td
           width="50"
@@ -55,11 +48,6 @@ exports[`ListItem component renders listItem name and price { order: 1, price: 2
       </tr>
     </tbody>
   </table>
-</div>
-`;
-
-exports[`ListItem component renders listItem name and price { order: 1, price: 2.33, title: 'test item' } 1`] = `
-<div>
   <table
     width="300"
   >
@@ -68,12 +56,12 @@ exports[`ListItem component renders listItem name and price { order: 1, price: 2
         <td
           width="100%"
         >
-          test item
+          porridge
         </td>
         <td
           width="50"
         >
-          £2.33
+          £1.50
         </td>
         <td>
           <button>
@@ -83,13 +71,6 @@ exports[`ListItem component renders listItem name and price { order: 1, price: 2
       </tr>
     </tbody>
   </table>
-</div>
-`;
-
-exports[`ListItem component renders listItem name and price { order: 1, title: 'test item' } 1`] = `<div />`;
-
-exports[`ListItem component renders listItem name and price { price: 2, title: 'test item' } 1`] = `
-<div>
   <table
     width="300"
   >
@@ -98,12 +79,12 @@ exports[`ListItem component renders listItem name and price { price: 2, title: '
         <td
           width="100%"
         >
-          test item
+          cheese
         </td>
         <td
           width="50"
         >
-          £2.00
+          £1.23
         </td>
         <td>
           <button>

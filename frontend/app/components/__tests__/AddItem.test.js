@@ -14,6 +14,6 @@ describe('AddItem component', () => {
     )
 
     // Assert
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

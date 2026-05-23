@@ -13,6 +13,6 @@ describe('ErrorMessage component', () => {
     )
 
     // Assert
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

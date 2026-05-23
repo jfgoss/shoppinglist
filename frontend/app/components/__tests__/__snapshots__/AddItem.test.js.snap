@@ -1,23 +1,25 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AddItem component renders AddItem as expected 1`] = `
-<form>
-  <label>
-    Item: 
-    <input
-      name="title"
-    />
-  </label>
-  <label>
-    Price: 
-    <input
-      name="price"
-    />
-  </label>
-  <button
-    type="submit"
-  >
-    Add
-  </button>
-</form>
+<div>
+  <form>
+    <label>
+      Item: 
+      <input
+        name="title"
+      />
+    </label>
+    <label>
+      Price: 
+      <input
+        name="price"
+      />
+    </label>
+    <button
+      type="submit"
+    >
+      Add
+    </button>
+  </form>
+</div>
 `;
