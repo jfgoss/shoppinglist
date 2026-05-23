@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ListItem component renders listItem name and price { order: 1, price: -1, title: 'test item' } 1`] = `
+<table
+  width="300"
+>
+  <tbody>
+    <tr>
+      <td
+        width="100%"
+      >
+        test item
+      </td>
+      <td
+        width="50"
+      >
+        £-1.00
+      </td>
+      <td>
+        <button>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ListItem component renders listItem name and price { order: 1, price: 2 } 1`] = `null`;
+
+exports[`ListItem component renders listItem name and price { order: 1, price: 2, title: 'test item' } 1`] = `
+<table
+  width="300"
+>
+  <tbody>
+    <tr>
+      <td
+        width="100%"
+      >
+        test item
+      </td>
+      <td
+        width="50"
+      >
+        £2.00
+      </td>
+      <td>
+        <button>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ListItem component renders listItem name and price { order: 1, price: 2.33, title: 'test item' } 1`] = `
+<table
+  width="300"
+>
+  <tbody>
+    <tr>
+      <td
+        width="100%"
+      >
+        test item
+      </td>
+      <td
+        width="50"
+      >
+        £2.33
+      </td>
+      <td>
+        <button>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`ListItem component renders listItem name and price { order: 1, title: 'test item' } 1`] = `null`;
+
+exports[`ListItem component renders listItem name and price { price: 2, title: 'test item' } 1`] = `
+<table
+  width="300"
+>
+  <tbody>
+    <tr>
+      <td
+        width="100%"
+      >
+        test item
+      </td>
+      <td
+        width="50"
+      >
+        £2.00
+      </td>
+      <td>
+        <button>
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

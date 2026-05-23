@@ -1,3 +1,5 @@
+import React from "react"
+
 export const ListItem = ({listItem, onDelete}) => {
   // TODO: Only render if data is valid. Need to confirm requirements on how to handle this.
   if (listItem?.title && listItem?.price) {

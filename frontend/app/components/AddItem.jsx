@@ -1,3 +1,4 @@
+import React from "react"
 
 export const AddItem = ({list, setList}) => {
   const handleSubmit = (e) => {

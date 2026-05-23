@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Login component renders login component 1`] = `
+<form>
+  <label>
+    Username: 
+    <input
+      name="username"
+    />
+  </label>
+  <p />
+  <button
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+`;

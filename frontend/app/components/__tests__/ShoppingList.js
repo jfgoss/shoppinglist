@@ -1,9 +1,7 @@
+import React from "react"
 import { render } from "@testing-library/react"
 import { ShoppingList } from "../ShoppingList"
 
-// TODO: Currently fails due to "ReferenceError: React is not defined"
-//       Suspect issue with babel translation from jsx?
-//       Have tried import React from "react", but doesn't fix
 describe('ShoppingList component', () => {
   it('renders shopping list in order', () => {
     // Arrange
