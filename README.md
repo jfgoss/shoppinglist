@@ -68,9 +68,9 @@ I originally estimated that I would complete about half of the tickets, marked a
 
 However, I ran in to a variety of issues that delayed my progress
  - I underestimated the effort of creating a comprehensive suite of unit tests 
- - Snapshot tests for React components failing to run due to "ReferenceError: React is not defined" required research
-   to resolve
-   - Note that these tests are still failing with this error, despite importing react. It may be something to do with
-     babel transform of the code for Jest, but I can not confirm yet 
+ - Snapshot tests for React components were failing
+   - See [issue #16](https://github.com/jfgoss/shoppinglist/issues/16)
+   - Because this was not fixed within the allotted time I have [raised a PR](https://github.com/jfgoss/shoppinglist/pull/17/changes) for the resolution
+   - Issues were due to missing imports and jest configuration file 
  - CORS support when debugging in Google Chrome
  - Implementing a front and backend with auth header was a bigger task than estimated
