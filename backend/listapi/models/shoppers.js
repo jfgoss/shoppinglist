@@ -1,16 +1,9 @@
-const shoppers = [
-  {
-    id:1,
-    username: "user1",
-  },
-  {
-    id:2,
-    username: "user2",
-  },
-]
+const { executeCommand } = require('../dataaccess/database')
 
-const getShopper = (username) => {
-  return shoppers.find(shopper => shopper.username == username)
+const getShopper = async (username) => {
+  // TODO: Error handling
+  const res = await executeCommand([{ sql: "SELECT id, username FROM shopper WHERE username=? LIMIT 1", parameters: [username] }])
+  return res[0][0]
 }
 
 module.exports = {

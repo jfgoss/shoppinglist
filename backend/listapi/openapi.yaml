@@ -51,6 +51,7 @@ paths:
           description: Authorization of the specified user failed
   /list/{listId}:
     get:
+      summary: Gets the specified list
       parameters:
         - in: header
           name: Authorization
@@ -89,6 +90,48 @@ paths:
                 - title: item2
                   price: 43.21
                   order: 1
+        "401":
+          description: The user token is invalid
+        "403":
+          description: The user for the token is not forbidden from accessing the specified list
+        "404":
+          description: Not found
+    post:
+      summary: Sets a list to the specified values
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+          description: Authorization token
+      requestBody:
+        description: Sets the contents of the specified list
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                listId:
+                  type: integer
+                list:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                      price:
+                        type: number
+                      order:
+                        type: integer
+              required:
+                - listId
+                - list
+      responses:
+        "200":
+          description: OK
         "401":
           description: The user token is invalid
         "403":

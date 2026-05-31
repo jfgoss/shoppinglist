@@ -1,37 +1,37 @@
-const { getUserAuth } = require("../models/authUsers")
+const { getUserFromToken, createUserToken } = require("../models/authUsers")
 
 // TODO: This is just to track different users between api calls using a token
 //       full authorisation will be implemented in #10
-const authorise = (req, res) => {
-  const userToken = req?.headers?.authorization?.toLowerCase()
-  const auth = getUserAuth().find(user => user.token?.toLowerCase() == userToken)
-
-  if (!auth) {
+const authorise = async (req, res) => {
+  const userToken = req?.headers?.authorization
+  const username = getUserFromToken(userToken)
+  if (!username) {
+    // No matching user found
     res.status(401).json({ message: "Unauthorised" })
   }
 
-  return auth?.username
+  return username
 }
 
-const getToken = (req, res) => {
+const getToken = async (req, res) => {
   try {
-    const username = req?.body?.username?.toLowerCase()
+    const username = req?.body?.username
     if (!username) {
       res.status(400).send()
       return
     }
 
     // TODO: As part of story #10 we can implement a username/password login with other auth (e.g. JWT)
-    const auth = getUserAuth().find(user => user?.username.toLowerCase() == username)
+    const token = await createUserToken(username)
 
     // We return 401, not 404 as we don't want to notify attackers that
     // a username is known or not
-    if (!auth) {
+    if (!token) {
       res.status(401).send()
       return
     }
 
-    res.status(200).json({ token: auth.token })
+    res.status(200).json({ token })
   } catch (err) {
     console.error(`Error getting list: ${err}`)
 

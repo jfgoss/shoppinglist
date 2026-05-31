@@ -2,7 +2,7 @@ import { ShoppingList } from "../components/ShoppingList"
 import { AddItem } from "../components/AddItem"
 import { Login } from "../components/Login"
 import { ErrorMessage } from "../components/ErrorMessage"
-import { getList } from "../utils/listApi"
+import { getList, setList } from "../utils/listApi"
 import { getSessionToken } from "../utils/loginUser"
 
 import { useEffect, useState } from "react"
@@ -26,6 +26,11 @@ export default function Home() {
     }
   }, [sessionToken])
 
+  const onSetList = (list) => {
+    setCurrentList(list)
+    setList(1, list, setErrorMessage)
+  }
+
   return (
     <>
       {errorMessage ?? (
@@ -35,9 +40,9 @@ export default function Home() {
         <Login setSessionToken={setSessionToken} setErrorMessage={setErrorMessage} />
       ) : currentList ? (
         <>
-          <ShoppingList list={currentList} setList={setCurrentList} />
+          <ShoppingList list={currentList} setList={onSetList} />
           <p />
-          <AddItem list={currentList} setList={setCurrentList} />
+          <AddItem list={currentList} setList={onSetList} />
         </>
       ) : (
         <div>No shopping list available.</div>
