@@ -137,3 +137,8 @@ Update host that a user can connect from
 SELECT User, Host FROM mysql.user;
 RENAME USER 'shoppinglistapp'@'<current host>' TO 'shoppinglistapp'@'<new host>';
 ```
+
+Get MariaDB docker container logs
+```bash
+docker logs <container name>
+```

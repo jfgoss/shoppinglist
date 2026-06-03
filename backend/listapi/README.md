@@ -62,10 +62,10 @@ AUTH_TOKEN=$(curl -X POST -H "Content-Type: application/json" -d "{ \"username\"
 curl -H "Authorization: $AUTH_TOKEN" http://localhost:3000/list/1
 
 # Update list id 1
-curl -X POST /
-  -H "Content-Type: application/json" /
-  -H "Authorization: $AUTH_TOKEN" /
-  -d "{ \"listId\": 1, \"list\": [{\"order\":1,\"price\":1.49,\"title\":\"Sourdough Bread\"},{\"order\":2,\"price\":3.29,\"title\":\"Whole Milk (2 L)\"},{\"order\":3,\"price\":2.75,\"title\":\"Free-Range Eggs (6)\"},{\"order\":4,\"price\":4.99,\"title\":\"Cheddar Cheese (400 g)\"},{\"order\":5,\"price\":0.89,\"title\":\"Bananas (x6)\"}] }" /
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: $AUTH_TOKEN" \
+  -d "{ \"listId\": 1, \"list\": [{\"order\":1,\"price\":1.49,\"title\":\"Sourdough Bread\"},{\"order\":2,\"price\":3.29,\"title\":\"Whole Milk (2 L)\"},{\"order\":3,\"price\":2.75,\"title\":\"Free-Range Eggs (6)\"},{\"order\":4,\"price\":4.99,\"title\":\"Cheddar Cheese (400 g)\"},{\"order\":5,\"price\":0.89,\"title\":\"Bananas (x6)\"}] }" \
   http://localhost:3000/list
 ```
 
