@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const cors = require("cors")
+const rateLimit = require("express-rate-limit");
 
 const { initDbConnection, closeDbConnection } = require("./dataaccess/database")
 //const { executeCommand } = require("./dataaccess/database")
@@ -8,8 +9,14 @@ const { initDbConnection, closeDbConnection } = require("./dataaccess/database")
 const { getToken } = require("./middleware/auth")
 const { getList, setList } = require("./middleware/lists")
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5,
+})
+
 app.use(express.json())
 app.use(cors())
+app.use(limiter)
 
 initDbConnection()
 
