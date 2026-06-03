@@ -1,7 +1,7 @@
-const { executeCommand } = require('../dataaccess/database')
+import { executeCommand } from "../dataaccess/database.js"
 
 // TODO: Not the most efficient way to update by deleting all listItem records and reinserting
-const setShoppingListItems = async (shopperId, listId, listItems) => {
+export const setShoppingListItems = async (shopperId, listId, listItems) => {
   // TODO: Error handling
   let insertCommands = [{ sql: "START TRANSACTION" }]
   if (listId) {
@@ -35,7 +35,7 @@ const setShoppingListItems = async (shopperId, listId, listItems) => {
   return listId
 }
 
-const getShoppingListItems = async (shopperId, listId) => {
+export const getShoppingListItems = async (shopperId, listId) => {
   // TODO: Error handling
 
   // Check list is owned by shopper
@@ -55,14 +55,8 @@ const getShoppingListItems = async (shopperId, listId) => {
   return res[0]
 }
 
-const getShoppingLists = async (shopperId) => {
+export const getShoppingLists = async (shopperId) => {
   // TODO: Error handling
   const res = await executeCommand([{ sql: "SELECT id, list_name FROM list WHERE owner_id=?", parameters: [shopperId] }])
   return res[0]
-}
-
-module.exports = {
-  setShoppingListItems,
-  getShoppingListItems,
-  getShoppingLists
 }

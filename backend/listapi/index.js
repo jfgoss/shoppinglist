@@ -1,13 +1,14 @@
-const express = require("express")
+import express from "express"
+import rateLimit from "express-rate-limit"
+import cors from "cors"
+
+import { initDbConnection, closeDbConnection } from "./dataaccess/database.js"
+//import { executeCommand } from "./dataaccess/database.js"
+
+import { getToken } from "./middleware/auth.js"
+import { getList, setList } from "./middleware/lists.js"
+
 const app = express()
-const cors = require("cors")
-const rateLimit = require("express-rate-limit");
-
-const { initDbConnection, closeDbConnection } = require("./dataaccess/database")
-//const { executeCommand } = require("./dataaccess/database")
-
-const { getToken } = require("./middleware/auth")
-const { getList, setList } = require("./middleware/lists")
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

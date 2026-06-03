@@ -1,4 +1,4 @@
-const mariadb = require('mariadb')
+import { createPool } from "mariadb"
 
 const dbHost = process.env.SHOPPING_LIST_DB_HOST ?? "127.0.0.1"
 const dbPort = process.env.SHOPPING_LIST_DB_PORT ? parseInt(process.env.SHOPPING_LIST_DB_PORT) : 3306
@@ -8,7 +8,7 @@ const dbPassword = process.env.SHOPPING_LIST_DB_PASSWORD ?? ""
 
 let pool
 
-const initDbConnection = () => {
+export const initDbConnection = () => {
   console.log(`Creating DB connection to ${dbHost}:${dbPort}/${dbName} user ${dbUser}`)
   const options = {
      host: dbHost,
@@ -24,15 +24,15 @@ const initDbConnection = () => {
     console.warn("No $SHOPPING_LIST_DB_PASSWORD environment variable set?")
   }
 
-  pool = mariadb.createPool(options)
+  pool = createPool(options)
   console.debug("DB connection pool created")
 }
 
-const closeDbConnection = () => {
+export const closeDbConnection = () => {
   pool.end()
 }
 
-const executeCommand = async (sqlCommands) => {
+export const executeCommand = async (sqlCommands) => {
   let conn
   const results = []
   try {
@@ -52,10 +52,4 @@ const executeCommand = async (sqlCommands) => {
     }
   }
   return results
-}
-
-module.exports = {
-  initDbConnection,
-  closeDbConnection,
-  executeCommand
 }

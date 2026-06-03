@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend REST API server for shopping list",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "test": "jest --coverage"

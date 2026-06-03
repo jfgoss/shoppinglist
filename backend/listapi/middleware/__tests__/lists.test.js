@@ -1,7 +1,7 @@
-const { getList} = require("../lists")
-const { authorise } = require("../auth")
-const { getShoppingList } = require("../../models/shoppingLists")
-const { getShopper } = require("../../models/shoppers")
+import { getList} from "../lists.js"
+import { authorise } from "../auth.js"
+import { getShoppingList } from "../../models/shoppingLists.js"
+import { getShopper } from "../../models/shoppers.js"
 
 jest.mock("../auth")
 jest.mock("../../models/shoppingLists")

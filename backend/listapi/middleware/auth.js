@@ -1,8 +1,8 @@
-const { getUserFromToken, createUserToken } = require("../models/authUsers")
+import { getUserFromToken, createUserToken } from "../models/authUsers.js"
 
 // TODO: This is just to track different users between api calls using a token
 //       full authorisation will be implemented in #10
-const authorise = async (req, res) => {
+export const authorise = async (req, res) => {
   const userToken = req?.headers?.authorization
   const username = getUserFromToken(userToken)
   if (!username) {
@@ -13,7 +13,7 @@ const authorise = async (req, res) => {
   return username
 }
 
-const getToken = async (req, res) => {
+export const getToken = async (req, res) => {
   try {
     const username = req?.body?.username
     if (!username) {
@@ -39,9 +39,4 @@ const getToken = async (req, res) => {
     // the system that can be exploited by bad actors
     res.status(500).send()
   }
-}
-
-module.exports = {
-  authorise,
-  getToken
 }

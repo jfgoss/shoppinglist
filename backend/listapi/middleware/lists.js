@@ -1,8 +1,8 @@
-const { authorise } = require("./auth")
-const { setShoppingListItems, getShoppingListItems, getShoppingLists } = require("../models/shoppingLists")
-const { getShopper } = require("../models/shoppers")
+import { authorise } from "./auth.js"
+import { setShoppingListItems, getShoppingListItems, getShoppingLists } from "../models/shoppingLists.js"
+import { getShopper } from "../models/shoppers.js"
 
-const setList = async (req, res) => {
+export const setList = async (req, res) => {
   try {
     const username = await authorise(req, res)
     if (!username) {
@@ -37,7 +37,7 @@ const setList = async (req, res) => {
   }
 }
 
-const getList = async (req, res) => {
+export const getList = async (req, res) => {
   try {
     const username = await authorise(req, res)
     if (!username) {
@@ -66,9 +66,4 @@ const getList = async (req, res) => {
     // the system that can be exploited by bad actors
     res.status(500).send()
   }
-}
-
-module.exports = {
-  setList,
-  getList
 }

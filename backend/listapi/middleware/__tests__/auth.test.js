@@ -1,5 +1,5 @@
-const { getUserAuth } = require("../../models/authUsers")
-const { authorise, getToken } = require("../auth")
+import { getUserAuth } from "../../models/authUsers.js"
+import { authorise, getToken } from "../auth.js"
 
 jest.mock("../../models/authUsers")
 
