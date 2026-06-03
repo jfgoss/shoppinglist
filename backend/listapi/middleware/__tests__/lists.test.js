@@ -1,6 +1,8 @@
-import { getList} from "../lists.js"
+import { jest } from "@jest/globals"
+
+import { getList, setList } from "../lists.js"
 import { authorise } from "../auth.js"
-import { getShoppingList } from "../../models/shoppingLists.js"
+import { getShoppingLists, getShoppingListItems, setShoppingListItems } from "../../models/shoppingLists.js"
 import { getShopper } from "../../models/shoppers.js"
 
 jest.mock("../auth")
@@ -152,4 +154,22 @@ describe('getList', () => {
     expect(mockRes.json).not.toHaveBeenCalled()
     expect(mockRes.send).toHaveBeenCalledTimes(1)
   })
+})
+
+describe('setList', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('returns if authorise fails', () => {
+    // Arrange
+    const testReq = { }
+    const mockRes = {
+      status: jest.fn(() => mockRes),
+      json: jest.fn(),
+      send: jest.fn()
+    }
+  })
+
+  // TODO: Additional tests for setList
 })

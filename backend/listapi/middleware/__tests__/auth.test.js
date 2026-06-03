@@ -1,4 +1,6 @@
-import { getUserAuth } from "../../models/authUsers.js"
+import { jest } from "@jest/globals"
+
+import { getUserFromToken, createUserToken } from "../../models/authUsers.js"
 import { authorise, getToken } from "../auth.js"
 
 jest.mock("../../models/authUsers")

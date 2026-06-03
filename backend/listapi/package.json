@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "jfgoss",
   "dependencies": {
@@ -15,5 +15,8 @@
     "express-rate-limit": "^8.5.2",
     "jest": "^30.4.2",
     "mariadb": "^3.5.2"
+  },
+  "jest": {
+    "transform": {}
   }
 }
