@@ -81,7 +81,7 @@ describe('getToken', () => {
   it('returns 401 for username no match', async () => {
     // Arrange
     const testReq = { body: { username: "TESTUSER" } }
-    createUserToken.mockReturnValueOnce(undefined)
+    createUserToken.mockResolvedValue(undefined)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn(),
@@ -102,7 +102,7 @@ describe('getToken', () => {
     // Arrange
     const testReq = { body: { username: "TESTUSER" } }
     const mockToken = "abcdefg"
-    createUserToken.mockReturnValueOnce(mockToken)
+    createUserToken.mockResolvedValue(mockToken)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn(),

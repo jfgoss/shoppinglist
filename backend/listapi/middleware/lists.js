@@ -16,11 +16,11 @@ const setList = async (req, res) => {
       res.status(403).send()
       return
     }
-
-    if (!req.body.listId || !Array.isArray(req.body.list)) {
+    if (!req.body?.listId || !Array.isArray(req.body?.list)) {
       res.status(400).send()
       return
     }
+
     const list = await setShoppingListItems(shopper.id, req.body.listId, req.body.list)
     if (!list) {
       res.status(404).send()
