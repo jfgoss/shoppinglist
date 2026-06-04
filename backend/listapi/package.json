@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage"
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage"
   },
   "author": "jfgoss",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "jest": "^30.4.2"
+    "express-rate-limit": "^8.5.2",
+    "jest": "^30.4.2",
+    "mariadb": "^3.5.2"
   }
 }

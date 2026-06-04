@@ -14,11 +14,11 @@ For details on how to run the backend server, please refer to [./backend/listapi
 
 After running the backend and frontend, you can test the list display using the following users;
 
-| username | effect                                             |
-| -------- | -------------------------------------------------- |
-| user1    | Will display test data                             |
-| user2    | User exists, but has no list against their account |
-| (other)  | Will fail to find the account                      |
+| username     | effect                                                                       |
+| ------------ | ---------------------------------------------------------------------------- |
+| alice_wonder | Will display test data                                                       |
+| bob_builder  | User exists, but has no list against the hardcoded list id from the frontend |
+| (other)      | Will fail to find the account                                                |
 
 When the front end is displayed, enter the user followed by pressing the Submit button.
 

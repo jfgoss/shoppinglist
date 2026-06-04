@@ -6,8 +6,8 @@ export const AddItem = ({list, setList}) => {
     const formData = new FormData(form)
 
     const data = Object.fromEntries(formData)
-    const totalItems = list.length
-    list.push({order: totalItems, price: Number.parseFloat(data.price), title: data.title})
+    const maxOrder = list.sort((a, b) => b.order - a.order)[0].order
+    list.push({order: maxOrder+1, price: Number.parseFloat(data.price), title: data.title})
     // Make a copy of list to trigger the rerender on the useState hook
     setList(list.slice(0))
   }
