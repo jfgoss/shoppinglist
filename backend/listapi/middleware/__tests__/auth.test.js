@@ -1,4 +1,4 @@
-const { getUserAuth } = require("../../models/authUsers")
+const { getUserFromToken, createUserToken } = require("../../models/authUsers")
 const { authorise, getToken } = require("../auth")
 
 jest.mock("../../models/authUsers")
@@ -8,23 +8,17 @@ describe('authorise', () => {
     jest.resetAllMocks();
   });
 
-  it('returns 401 authorise fails', () => {
+  it('returns 401 authorise fails', async () => {
     // Arrange
     const testReq = { headers: { authorization: "invalidtoken" } }
-    const mockUserAuth = [
-      {
-        username: "testuser",
-        token: "testToken"
-      },
-    ]
-    getUserAuth.mockReturnValueOnce(mockUserAuth)
+    getUserFromToken.mockReturnValueOnce(undefined)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn()
     }
 
     // Act
-    const username = authorise(testReq, mockRes)
+    const username = await authorise(testReq, mockRes)
 
     // Assert
     expect(username).toEqual(undefined)
@@ -34,28 +28,23 @@ describe('authorise', () => {
     expect(mockRes.json).toHaveBeenCalledWith({ message: "Unauthorised" })
   })
 
-  it.each([
-    [{ headers: { authorization: "testtoken" } }], 
-    [{ headers: { authorization: "TESTTOKEN" } }] // Check case insensitive
-  ])('returns 200 on success %s', (testReq) => {
+  it('returns 200 on success %s', async () => {
     // Arrange
-    const mockUserAuth = [
-      {
-        username: "testuser",
-        token: "testToken"
-      },
-    ]
-    getUserAuth.mockReturnValueOnce(mockUserAuth)
+    const testToken = "token"
+    const testReq = { headers: { authorization: testToken } }
+    const testUser = "testuser"
+    getUserFromToken.mockReturnValueOnce(testUser)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn()
     }
 
     // Act
-    const username = authorise(testReq, mockRes)
+    const username = await authorise(testReq, mockRes)
 
     // Assert
-    expect(username).toEqual(mockUserAuth[0].username)
+    expect(getUserFromToken).toHaveBeenCalledWith(testToken)
+    expect(username).toEqual(testUser)
     expect(mockRes.status).not.toHaveBeenCalled()
     expect(mockRes.json).not.toHaveBeenCalled()
   })
@@ -71,7 +60,7 @@ describe('getToken', () => {
     [ { body: {} } ],
     [ { body: { username: undefined } } ],
     [ { body: { username: "" } } ]
-  ])('returns 400 for no username %s', (testReq) => {
+  ])('returns 400 for no username %s', async (testReq) => {
     // Arrange
     const mockRes = {
       status: jest.fn(() => mockRes),
@@ -80,7 +69,7 @@ describe('getToken', () => {
     }
 
     // Act
-    getToken(testReq, mockRes)
+    await getToken(testReq, mockRes)
 
     // Assert
     expect(mockRes.status).toHaveBeenCalledTimes(1)
@@ -89,17 +78,10 @@ describe('getToken', () => {
     expect(mockRes.json).not.toHaveBeenCalled()
   })
 
-  it('returns 401 for username no match', () => {
+  it('returns 401 for username no match', async () => {
     // Arrange
     const testReq = { body: { username: "TESTUSER" } }
-
-    const mockUserAuth = [
-      {
-        username: "invaliduser",
-        token: "testToken"
-      },
-    ]
-    getUserAuth.mockReturnValueOnce(mockUserAuth)
+    createUserToken.mockReturnValueOnce(undefined)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn(),
@@ -107,7 +89,7 @@ describe('getToken', () => {
     }
 
     // Act
-    getToken(testReq, mockRes)
+    await getToken(testReq, mockRes)
 
     // Assert
     expect(mockRes.status).toHaveBeenCalledTimes(1)
@@ -116,18 +98,11 @@ describe('getToken', () => {
     expect(mockRes.json).not.toHaveBeenCalled()
   })
 
-    it.each([
-    [ { body: { username: "TESTUSER" } } ], // Check username is case insensitive in lookup
-    [ { body: { username: "testuser" } } ]
-  ])('returns 200 for success %s', (testReq) => {
+  it('returns 200 for success %s', async () => {
     // Arrange
-    const mockUserAuth = [
-      {
-        username: "testuser",
-        token: "testToken"
-      },
-    ]
-    getUserAuth.mockReturnValueOnce(mockUserAuth)
+    const testReq = { body: { username: "TESTUSER" } }
+    const mockToken = "abcdefg"
+    createUserToken.mockReturnValueOnce(mockToken)
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn(),
@@ -135,20 +110,20 @@ describe('getToken', () => {
     }
 
     // Act
-    getToken(testReq, mockRes)
+    await getToken(testReq, mockRes)
 
     // Assert
     expect(mockRes.status).toHaveBeenCalledTimes(1)
     expect(mockRes.status).toHaveBeenCalledWith(200)
     expect(mockRes.send).not.toHaveBeenCalled()
     expect(mockRes.json).toHaveBeenCalledTimes(1)
-    expect(mockRes.json).toHaveBeenCalledWith({ token: mockUserAuth[0].token })
+    expect(mockRes.json).toHaveBeenCalledWith({ "token": mockToken })
   })
 
-  it('returns 500 on exception', () => {
+  it('returns 500 on exception', async () => {
     // Arrange
     const testReq = { body: { username: "TESTUSER" } }
-    getUserAuth.mockImplementation(() => { throw new Error("Test Exception") })
+    createUserToken.mockImplementation(() => { throw new Error("Test Exception") })
     const mockRes = {
       status: jest.fn(() => mockRes),
       json: jest.fn(),
@@ -156,7 +131,7 @@ describe('getToken', () => {
     }
 
     // Act
-    getToken(testReq, mockRes)
+    await getToken(testReq, mockRes)
 
     // Assert
     expect(mockRes.status).toHaveBeenCalledTimes(1)

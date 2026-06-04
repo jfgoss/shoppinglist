@@ -8,6 +8,7 @@ const authorise = async (req, res) => {
   if (!username) {
     // No matching user found
     res.status(401).json({ message: "Unauthorised" })
+    return
   }
 
   return username
@@ -31,7 +32,7 @@ const getToken = async (req, res) => {
       return
     }
 
-    res.status(200).json({ token })
+    res.status(200).json({ token: token })
   } catch (err) {
     console.error(`Error getting list: ${err}`)
 

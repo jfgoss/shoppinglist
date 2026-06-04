@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage"
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage"
   },
   "author": "jfgoss",
   "dependencies": {

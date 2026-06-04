@@ -17,6 +17,36 @@ Then install the source dependencies using `npm`.
 npm i
 ```
 
+### Node v24.9+
+
+For testing mixed ESM and ECMA/CommonJS with Jest, version v24.9+ needs to be installed. This can be done using node version manager.
+
+Install [nvm from GitHub](https://github.com/nvm-sh/nvm#installing-and-updating) using the install script and pipe directly to bash shell.
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```
+
+Reset the current shell environment.
+```bash
+source ~/.bashrc
+```
+
+Check available node versions.
+```bash
+nvm list-remote
+```
+
+Install required version.
+```bash
+nvm install <version>
+```
+
+To list installed versions and switch between desired versions.
+```bash
+nvm list
+nvm use <version>
+```
+
 ## Configuration
 
 The following environment variables can be used to configure the server.
